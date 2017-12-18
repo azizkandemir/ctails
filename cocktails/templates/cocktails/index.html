@@ -1,4 +1,5 @@
 {% if all_cocktails %}
+    <h2>Our cocktails.</h2>
     <ul>
         {% for c in all_cocktails %}
         <li><a href="/cocktails/{{ c.cocktail_name}}/">{{ c.cocktail_name }}</a></li>
