@@ -2,13 +2,11 @@
 
 <h1>{{ ctail.cocktail_name }}</h1>
 <ul>
-    <head>
     <h3>PROPERTIES</h3>
     <li>Taste: {{ ctail.taste }}</li>
     <li>Difficulty: {{ ctail.difficulty }}</li>
     <li>Strength: {{ ctail.strength }}</li>
     <h3>SPIRITS</h3>
-    </head>
 </ul>
 {% if error_message %}
     <p><strong>{{ error_message }}</strong></p>

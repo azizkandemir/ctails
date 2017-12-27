@@ -22,6 +22,7 @@ def detail(request, cocktail_name):
     return render(request, 'cocktails/detail.html', {'ctail': ctail})
 
 def favorite(request, cocktail_name):
+
     ctail = get_object_or_404(Cocktail, pk=cocktail_name)
     try:
         selected_spirit = ctail.spirit_set.get(pk=request.POST['spirit'])
