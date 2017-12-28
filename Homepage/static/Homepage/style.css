@@ -1,0 +1,20 @@
+head{
+    display:flex;
+    align:center;
+}
+
+.box {
+    display:flex;
+    align-items:center;
+    background-color: rgba(26,32,21,0.47);
+    float: left;
+    width: 300px;
+    height: 600px;
+    border: 3px solid black;
+    margin: 1em;
+}
+h2{
+    padding:20px;
+    margin:0.5em;
+    font-family: 'Lobster', cursive;
+}

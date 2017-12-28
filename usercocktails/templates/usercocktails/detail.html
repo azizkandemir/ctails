@@ -1,18 +1,16 @@
-{% extends 'cocktails/base.html' %}
+{% extends 'usercocktails/base.html' %}
 {% block title %}Cocktail Details{% endblock %}
 
 {% block body %}
-    {% load staticfiles %}
-    <link rel="stylesheet" type="text/css" href="{% static 'cocktails/detail.css' %}" />
 
-    <img src="{{ ctail.cocktail_pic.url }}" height="480" width="360" align="left">
+    <img src="{{ uctail.cocktail_pic.url }}" height="480" width="360" align="left">
 
-    <h1>{{ object.cocktail_name }}</h1>
+    <h1>{{ uctail.cocktail_name }}</h1>
     <ul>
         <h3>PROPERTIES</h3>
-        <li>Taste: {{ ctail.taste }}</li>
-        <li>Difficulty: {{ ctail.difficulty }}</li>
-        <li>Strength: {{ ctail.strength }}</li>
+        <li>Taste: {{ uctail.taste }}</li>
+        <li>Difficulty: {{ uctail.difficulty }}</li>
+        <li>Strength: {{ uctail.strength }}</li>
         <h3>SPIRITS</h3>
     </ul>
     {% if error_message %}

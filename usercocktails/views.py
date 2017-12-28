@@ -1,4 +1,4 @@
-from .models import Cocktail, Spirit, UserCocktail
+from .models import UserCocktail
 from django.shortcuts import render, get_object_or_404
 from django.views import generic
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
@@ -6,38 +6,38 @@ from django.urls import reverse_lazy
 from django.http import JsonResponse
 
 class IndexView(generic.ListView):
-    template_name = 'cocktails/index.html'
+    template_name = 'usercocktails/index.html'
     context_object_name = 'all_cocktails'
 
     def get_queryset(self):
-        return Cocktail.objects.all()
+        return UserCocktail.objects.all()
 
 class DetailView(generic.DetailView):
-    model = Cocktail
-    template_name = 'cocktails/detail.html'
-    context_object_name = 'ctail'
+    model = UserCocktail
+    template_name = 'usercocktails/detail.html'
+    context_object_name = 'uctail'
 
 class CocktailCreate(CreateView):
-    model = Cocktail
+    model = UserCocktail
     fields = ['taste', 'cocktail_name', 'difficulty', 'strength', 'cocktail_pic']
 
 class CocktailUpdate(UpdateView):
-    model = Cocktail
+    model = UserCocktail
     fields = ['taste', 'cocktail_name', 'difficulty', 'strength', 'cocktail_pic']
 
 class CocktailDelete(DeleteView):
-    model = Cocktail
-    success_url = reverse_lazy('cocktails:index')
+    model = UserCocktail
+    success_url = reverse_lazy('usercocktails:index')
 
 def favorite_cocktail(request, cocktail_name):
-    cocktail = get_object_or_404(Cocktail, pk=cocktail_name)
+    cocktail = get_object_or_404(UserCocktail, pk=cocktail_name)
     try:
         if cocktail.is_favorite:
             cocktail.is_favorite = False
         else:
             cocktail.is_favorite = True
         cocktail.save()
-    except (KeyError, Cocktail.DoesNotExist):
+    except (KeyError, UserCocktail.DoesNotExist):
         return JsonResponse({'success': False})
 
     else:

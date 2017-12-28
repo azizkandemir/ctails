@@ -1,8 +1,6 @@
-{% extends 'cocktails/base.html' %}
+{% extends 'usercocktails/base.html' %}
 
 {% block body %}
-    {% load staticfiles %}
-    <link rel="stylesheet" type="text/css" href="{% static 'cocktails/style.css' %}" />
     {% if all_cocktails %}
         <h2>Our cocktails.</h2>
 
@@ -10,11 +8,11 @@
             {% for c in all_cocktails %}
             <li>
                 <!-- Detail Cocktail -->
-                <a href="{% url 'cocktails:detail' c.cocktail_name %}" class="btn btn-primary btn-sm">{{ c.cocktail_name }}</a>
+                <a href="{% url 'usercocktails:detail' c.cocktail_name %}" class="btn btn-primary btn-sm">{{ c.cocktail_name }}</a>
 
                 <!-- Delete Cocktail -->
-                <a href="{% url 'cocktails:cocktail-delete' c.cocktail_name %}" class="btn btn-default btn-sm">
-                    <form action="{% url 'cocktails:cocktail-delete' c.cocktail_name %}" method="post" style="display: inline;">
+                <a href="{% url 'usercocktails:cocktail-delete' c.cocktail_name %}" class="btn btn-default btn-sm">
+                    <form action="{% url 'usercocktails:cocktail-delete' c.cocktail_name %}" method="post" style="display: inline;">
                         {% csrf_token %}
                         <input type="hidden" name="cocktail_name" value="{{ all_cocktails.cocktail_name }}" />
                         <button type="submit" class="btn btn-default btn-sm">
@@ -24,8 +22,8 @@
                 </a>
 
                 <!-- Update Cocktail -->
-                <a href="{% url 'cocktails:cocktail-update' c.cocktail_name %}" class="btn btn-default btn-sm">
-                    <form action="{% url 'cocktails:cocktail-update' c.cocktail_name %}" method="post" style="display: inline;">
+                <a href="{% url 'usercocktails:cocktail-update' c.cocktail_name %}" class="btn btn-default btn-sm">
+                    <form action="{% url 'usercocktails:cocktail-update' c.cocktail_name %}" method="post" style="display: inline;">
                         {% csrf_token %}
                         <input type="hidden" name="cocktail_name" value="{{ all_cocktails.cocktail_name }}" />
                         <button type="submit" class="btn btn-default btn-sm">
@@ -34,7 +32,7 @@
                     </form>
                 </a>
                 <!-- Favorite Cocktail-->
-                <a href="{% url 'cocktails:favorite_cocktail' c.cocktail_name %}" class="btn btn-default btn-sm btn-favorite" role="button">
+                <a href="{% url 'usercocktails:favorite_cocktail' c.cocktail_name %}" class="btn btn-default btn-sm btn-favorite" role="button">
                     <span class="glyphicon glyphicon-star {% if c.is_favorite %}active{% endif %}"></span>
                 </a>
             </li>
