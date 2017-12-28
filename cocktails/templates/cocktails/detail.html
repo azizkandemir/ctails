@@ -1,31 +1,37 @@
-<img src="{{ ctail.cocktail_pic }}" height="480" width="360" align="left">
+{% extends 'cocktails/base.html' %}
+{% block title %}Cocktail Details{% endblock %}
 
-<h1>{{ ctail.cocktail_name }}</h1>
-<ul>
-    <h3>PROPERTIES</h3>
-    <li>Taste: {{ ctail.taste }}</li>
-    <li>Difficulty: {{ ctail.difficulty }}</li>
-    <li>Strength: {{ ctail.strength }}</li>
-    <h3>SPIRITS</h3>
-</ul>
-{% if error_message %}
-    <p><strong>{{ error_message }}</strong></p>
-{% endif%}
+{% block body %}
 
-<form action="{% url 'cocktails:favorite' ctail.cocktail_name %}" method="post">
-    {% csrf_token %}
-    {% for s in ctail.spirit_set.all %}
-        <input type="radio" id="s{{ forloop.counter }}" name="spirit" value="{{ s.pk }}" />
-        <label for="s{{ forloop.counter }}">
-            {{ s.spirit_name }}
-            {% if s.is_favorite %}
-                <img src="https://www.cloudynights.com//public/style_images/master/star.png" />
-            {% endif %}
-        </label><br>
-    {% endfor %}
-    <input type="submit" value="Favorite">
-</form>
+    <img src="{{ ctail.cocktail_pic }}" height="480" width="360" align="left">
 
+    <h1>{{ object.cocktail_name }}</h1>
+    <ul>
+        <h3>PROPERTIES</h3>
+        <li>Taste: {{ ctail.taste }}</li>
+        <li>Difficulty: {{ ctail.difficulty }}</li>
+        <li>Strength: {{ ctail.strength }}</li>
+        <h3>SPIRITS</h3>
+    </ul>
+    {% if error_message %}
+        <p><strong>{{ error_message }}</strong></p>
+    {% endif%}
+
+    <!-- <form action="{#% url 'cocktails:favorite' ctail.cocktail_name %#}" method="post">
+        {#% csrf_token %#}
+        {#% for s in ctail.spirit_set.all %#}
+            <input type="radio" id="s{{ forloop.counter }}" name="spirit" value="{{ s.pk }}" />
+            <label for="s{{ forloop.counter }}">
+                {{ s.spirit_name }}
+                {#% if s.is_favorite %#}
+                    <img src="https://www.cloudynights.com//public/style_images/master/star.png" />
+                {#% endif %#}
+            </label><br>
+        {#% endfor %#}
+        <input type="submit" value="Favorite">
+    </form> -->
+
+{% endblock %}
 
 
 

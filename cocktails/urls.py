@@ -6,11 +6,11 @@ app_name = 'cocktails'
 
 urlpatterns = [
     # /cocktails/
-    path('', views.index, name='index'),
+    path('', views.IndexView.as_view(), name='index'),
 
     # /cocktails/712/
-    path('<str:cocktail_name>/', views.detail, name='detail'),
+    path('<str:pk>/', views.DetailView.as_view(), name='detail'),
 
     # /cocktails/<cocktail_name>/favorite
-    path('<str:cocktail_name>/favorite/', views.favorite, name='favorite'),
+    #path('<str:cocktail_name>/favorite/', views.favorite, name='favorite'),
 ]

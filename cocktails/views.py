@@ -1,26 +1,39 @@
 from .models import Cocktail, Spirit
 from django.shortcuts import render, get_object_or_404
+from django.views import generic
+
+class IndexView(generic.ListView):
+    template_name = 'cocktails/index.html'
+    context_object_name = 'all_cocktails'
+
+    def get_queryset(self):
+        return Cocktail.objects.all()
+
+class DetailView(generic.DetailView):
+    model = Cocktail
+    template_name = 'cocktails/detail.html'
+    context_object_name = 'ctail'
 
 
-def index(request):
-    all_cocktails = Cocktail.objects.all()
-    context = {'all_cocktails': all_cocktails}
-    """
-    html = ''
-    for cocktail in all_cocktails:
-        url = '/cocktails/' + str(cocktail.id) + '/'
-        html += '<a href="' + url + '">' + cocktail.cocktail_name + '</a><br>'"""
-    return render(request, 'cocktails/index.html', context)
+#def index(request):
+    #all_cocktails = Cocktail.objects.all()
+    #context = {'all_cocktails': all_cocktails}
+    #"""
+    #html = ''
+    #for cocktail in all_cocktails:
+    #    url = '/cocktails/' + str(cocktail.id) + '/'
+    #    html += '<a href="' + url + '">' + cocktail.cocktail_name + '</a><br>'"""
+    #return render(request, 'cocktails/index.html', context)
 
 
-def detail(request, cocktail_name):
-    """try:
-        ctail = Cocktail.objects.get(pk=cocktail_name)
-    except Cocktail.DoesNotExist:
-        raise Http404("Cocktail does not exist")"""
-    ctail = get_object_or_404(Cocktail, pk=cocktail_name)
-    return render(request, 'cocktails/detail.html', {'ctail': ctail})
-
+#def detail(request, cocktail_name):
+    #"""try:
+    #    ctail = Cocktail.objects.get(pk=cocktail_name)
+    #except Cocktail.DoesNotExist:
+    #    raise Http404("Cocktail does not exist")"""
+    #ctail = get_object_or_404(Cocktail, pk=cocktail_name)
+    #return render(request, 'cocktails/detail.html', {'ctail': ctail})
+"""
 def favorite(request, cocktail_name):
 
     ctail = get_object_or_404(Cocktail, pk=cocktail_name)
@@ -39,3 +52,4 @@ def favorite(request, cocktail_name):
             selected_spirit.is_favorite = True
             selected_spirit.save()
         return render(request, 'cocktails/detail.html', {'ctail': ctail})
+"""
