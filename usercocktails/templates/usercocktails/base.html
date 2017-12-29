@@ -27,13 +27,13 @@
         <!-- Items -->
         <div class="collapse navbar-collapse" id="topNavBar">
             <ul class="nav navbar-nav">
-                <li class="active">
+                <li class="#">
                     <a href="{% url 'cocktails:index' %}">
                         <span class="glyphicon glyphicon-glass" aria-hidden="true"></span>&nbsp; Cocktails
                     </a>
                 </li>
                 <li class="">
-                    <a href="#">
+                    <a href="{% url 'what2drink:index' %}">
                         <span class="glyphicon glyphicon-question-sign" aria-hidden="true"></span>&nbsp; What2Drink
                     </a>
                 </li>
@@ -47,18 +47,18 @@
             </form>
 
             <ul class="nav navbar-nav navbar-right">
-                <li class="active">
+                <li class="{% block myCocktails_active %}active{% endblock %}">
                     <a href="{% url 'usercocktails:index' %}">
                         <span class="glyphicon glyphicon-glass" aria-hidden="true"></span>&nbsp; myCocktails
                     </a>
                 </li>
-                <li class="">
+                <li class="{% block addCocktail_active %}{% endblock %}">
                     <a href="{% url 'usercocktails:cocktail-add' %}">
                         <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>&nbsp; Add Cocktail
                     </a>
                 </li>
                 <li class="">
-                    <a href="#">
+                    <a href="{% url 'Homepage:logout' %}">
                         <span class="glyphicon glyphicon-log-out" aria-hidden="true"></span>&nbsp; Logout
                     </a>
                 </li>

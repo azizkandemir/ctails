@@ -1,38 +1,34 @@
-{% extends 'cocktails/base.html' %}
+{{% extends 'cocktails/base.html' %}
 {% block title %}Cocktail Details{% endblock %}
 
 {% block body %}
-    {% load staticfiles %}
-    <link rel="stylesheet" type="text/css" href="{% static 'cocktails/detail.css' %}" />
+{% load staticfiles %}
+<head>
+    <link rel="stylesheet" type="text/css" href="{% static 'cocktails/detail.css' %}"/>
+</head>
+<body>
+    <img src="{{ all_cocktails.cocktail_pic.url }}" height="480" width="360" align="left">
 
-    <img src="{{ ctail.cocktail_pic.url }}" height="480" width="360" align="left">
-
-    <h1>{{ object.cocktail_name }}</h1>
-    <ul>
-        <h3>PROPERTIES</h3>
-        <li>Taste: {{ ctail.taste }}</li>
-        <li>Difficulty: {{ ctail.difficulty }}</li>
-        <li>Strength: {{ ctail.strength }}</li>
+    <div id="name">
+        <h3>{{ all_cocktails.cocktail_name }}</h3></div>
+    <div id="name">
+        <h3>PROPERTIES</h3></div>
+    <div id="name2">
+        <li>Taste: {{ all_cocktails.taste }}</li></div>
+    <div id ="name2">
+        <li>Difficulty: {{ all_cocktails.difficulty }}</li>
+    </div>
+    <div id="name2">
+        <li>Strength: {{ all_cocktails.strength }}</li>
+    </div>
+    <div id="name">
         <h3>SPIRITS</h3>
-    </ul>
+    </div>
+</body>
+
     {% if error_message %}
         <p><strong>{{ error_message }}</strong></p>
     {% endif%}
-
-    <!-- <form action="{#% url 'cocktails:favorite' ctail.cocktail_name %#}" method="post">
-        {#% csrf_token %#}
-        {#% for s in ctail.spirit_set.all %#}
-            <input type="radio" id="s{{ forloop.counter }}" name="spirit" value="{{ s.pk }}" />
-            <label for="s{{ forloop.counter }}">
-                {{ s.spirit_name }}
-                {#% if s.is_favorite %#}
-                    <img src="https://www.cloudynights.com//public/style_images/master/star.png" />
-                {#% endif %#}
-            </label><br>
-        {#% endfor %#}
-        <input type="submit" value="Favorite">
-    </form> -->
-
 {% endblock %}
 
 

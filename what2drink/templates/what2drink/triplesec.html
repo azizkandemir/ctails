@@ -1,0 +1,22 @@
+{% extends 'what2drink/base.html' %}
+
+{% block body %}
+    {% load staticfiles %}
+    <link rel="stylesheet" type="text/css" href="{% static 'cocktails/style.css' %}" />
+    {% if triplesec_cocktails %}
+        <h2>Our cocktails.</h2>
+
+        <ul>
+            {% for c in triplesec_cocktails %}
+            <li>
+                <!-- Detail Cocktail -->
+                <a href="{% url 'cocktails:detail' c.cocktail_name %}" class="btn btn-primary btn-sm">{{ c.cocktail_name }}</a>
+            </li>
+            {% endfor %}
+        </ul>
+
+    {% else %}
+        <h3>There is not any cocktails</h3>
+    {% endif %}
+
+{% endblock %}

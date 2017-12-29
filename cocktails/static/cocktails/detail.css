@@ -1,5 +1,17 @@
-h3{
-    padding:20px;
-    margin:0.5em;
-    background-color: darkgreen;
+img{
+    margin-left:200px;
+    border: 3px groove darkblue;
+}
+
+#name{
+    text-align: center;
+    padding:1em;
+}
+
+#name2{
+    text-align:center;
+    padding:1em;
+}
+body{
+    background: green url("images/123.jpg") no-repeat right bottom;
 }

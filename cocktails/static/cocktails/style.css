@@ -1,6 +1,5 @@
 body {
-    background: white url("../../../Homepage/static/Homepage/images/bg.jpg");
-    background-size: contain;
+    background: white url("images/123.jpg") no-repeat right bottom;
 }
 
 .navbar{
@@ -9,4 +8,12 @@ body {
 
 .navbar-brand{
     font-family: 'Satisfy', cursive;
+}
+
+
+.card{
+    margin:15px;
+    align-items:center;
+    text-align: center;
+
 }

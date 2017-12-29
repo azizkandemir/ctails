@@ -4,42 +4,18 @@
     {% load staticfiles %}
     <link rel="stylesheet" type="text/css" href="{% static 'cocktails/style.css' %}" />
     {% if all_cocktails %}
-        <h2>Our cocktails.</h2>
-
-        <ul>
-            {% for c in all_cocktails %}
-            <li>
-                <!-- Detail Cocktail -->
-                <a href="{% url 'cocktails:detail' c.cocktail_name %}" class="btn btn-primary btn-sm">{{ c.cocktail_name }}</a>
-
-                <!-- Delete Cocktail -->
-                <a href="{% url 'cocktails:cocktail-delete' c.cocktail_name %}" class="btn btn-default btn-sm">
-                    <form action="{% url 'cocktails:cocktail-delete' c.cocktail_name %}" method="post" style="display: inline;">
-                        {% csrf_token %}
-                        <input type="hidden" name="cocktail_name" value="{{ all_cocktails.cocktail_name }}" />
-                        <button type="submit" class="btn btn-default btn-sm">
-                            <span class="glyphicon glyphicon-trash"></span>
-                        </button>
-                    </form>
-                </a>
-
-                <!-- Update Cocktail -->
-                <a href="{% url 'cocktails:cocktail-update' c.cocktail_name %}" class="btn btn-default btn-sm">
-                    <form action="{% url 'cocktails:cocktail-update' c.cocktail_name %}" method="post" style="display: inline;">
-                        {% csrf_token %}
-                        <input type="hidden" name="cocktail_name" value="{{ all_cocktails.cocktail_name }}" />
-                        <button type="submit" class="btn btn-default btn-sm">
-                            <span class="glyphicon glyphicon-edit"></span>
-                        </button>
-                    </form>
-                </a>
-                <!-- Favorite Cocktail-->
-                <a href="{% url 'cocktails:favorite_cocktail' c.cocktail_name %}" class="btn btn-default btn-sm btn-favorite" role="button">
-                    <span class="glyphicon glyphicon-star {% if c.is_favorite %}active{% endif %}"></span>
-                </a>
-            </li>
-            {% endfor %}
-        </ul>
+        {% for c in all_cocktails %}
+            <div class="row">
+                <div class="card-deck">
+                    <div class ="card">
+                        <div class="card-block">
+                            <img class ="card-image-top" alt="Card Image" src="{{c.cocktail_pic.url }}" style="max-width:20em ">
+                            <a href="{% url 'cocktails:detail' c.cocktail_name %}" class="btn btn-primary">{{ c.cocktail_name }}</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
 
     {% else %}
         <h3>There is not any cocktails</h3>

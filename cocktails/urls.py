@@ -7,6 +7,9 @@ urlpatterns = [
     # /cocktails/
     path('', views.IndexView.as_view(), name='index'),
 
+    # /cocktails/register
+    path('a/registration/', views.UserFormView.as_view(), name='register'),
+
     # /cocktails/712/
     path('<str:pk>/', views.DetailView.as_view(), name='detail'),
 

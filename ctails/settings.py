@@ -31,6 +31,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'what2drink.apps.What2DrinkConfig',
     'Homepage.apps.HomepageConfig',
     'usercocktails.apps.UsercocktailsConfig',
     'cocktails.apps.CocktailsConfig',
@@ -125,3 +126,4 @@ STATIC_URL = '/static/'
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
+LOGIN_REDIRECT_URL = '/cocktails'

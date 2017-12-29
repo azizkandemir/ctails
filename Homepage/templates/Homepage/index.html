@@ -1,6 +1,6 @@
-<!DOCTYPE html> 
-<html lang="en">
+{% extends 'Homepage/base.html' %}
 
+{% block body %}
 <head>
     <meta charset="UTF-8">
     <title>{% block title %}Ctails{% endblock %}</title>
@@ -16,10 +16,12 @@
             <a href="{% url 'cocktails:index' %}"><h2>COCKTAILS</h2></a>
         </div>
         <div class="box">
-            <h2>WHAT2DRINK</h2>
+            <a href="{% url 'what2drink:index' %}"><h2>What2Drink</h2></a>
         </div>
          <div class="box">
            <h2>SPIRITS </h2>
         </div>
 </div>
 </body>
+
+{% endblock %}

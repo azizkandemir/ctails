@@ -9,6 +9,11 @@ class Cocktail(models.Model):
     cocktail_pic = models.FileField()
     strength = models.CharField(max_length=20)
     is_favorite = models.BooleanField(default=False)
+    spirit1 = models.CharField(max_length=30, default='')
+    spirit2 = models.CharField(max_length=30, default='')
+    spirit3 = models.CharField(max_length=30, default='')
+    spirit4 = models.CharField(max_length=30, default='')
+    spirit5 = models.CharField(max_length=30, default='')
 
     def get_absolute_url(self):
         return reverse('cocktails:detail', kwargs={'pk': self.pk})

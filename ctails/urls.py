@@ -8,7 +8,7 @@ urlpatterns = [
     path('cocktails/', include('cocktails.urls')),
     path('', include('Homepage.urls')),
     path('usercocktails/', include('usercocktails.urls')),
-
+    path('what2drink', include('what2drink.urls')),
 ]
 
 if settings.DEBUG:
